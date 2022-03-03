@@ -13,4 +13,4 @@ li{list-style: none;}
 .gallery-item img{display: block; width: 100%;}
 .gallery-item.is-loading{opacity: 0;}
 
-.load-more{width: 100%; padding: 20px; background: rgb(252, 210, 23); border: none;border-radius: 3px; display: block; margin-top: 20px;}
+.load-more{width: 100%; padding: 20px; background: rgb(252, 210, 23); border: none;border-radius: 3px; display: block; margin-top: 20px; color: #fff;}
