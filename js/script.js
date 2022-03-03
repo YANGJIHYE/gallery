@@ -4,9 +4,31 @@ const $addItemCount=8;//클릭할때마다 나오는 갯수
 let $added=0;//처음보이는 것 리스트 항목 모두 로드하면 버튼이 사라지게 할 용도
 let $allData=[];
 $.getJSON('./data/content.json', function(data){
-
+    initGallery(data);
 });
 function initGallery(data){
     $allData=data;
-    console.log($allData)
+    //console.log($allData);
+    addItem();
+    $loadMoreBtn.click(function(){
+        addItem();
+    });
+}
+function addItem(){
+    let elements=[];
+    let slicedDate;
+    slicedDate=$allData.slice($added, $added += $addItemCount)
+    $each(slicedDate, function(idx, item){
+        let itemHTML=
+        '<li class="gallery-item">'+
+            '<a href="'+item.images.large+'">' +
+                '<figure>' +
+                    '<img src="'+item.images.thumb+'" alt="'+item.title+'">'+
+                    '<figcaption>'+item.title+'</figcaption>'+
+                '</figure>'+
+            '</a>'+
+        '</li>';
+        elements.push($(itemHTML).get(0))
+    })
+    $container.append(elements);
 }
